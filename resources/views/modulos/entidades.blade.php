@@ -110,7 +110,7 @@
                                 <button class="table-sort d-flex justify-content-between" data-sort="sort-name">Nombre</button>
                               </th>
                               <th>
-                                <button class="table-sort d-flex justify-content-between" data-sort="sort-city">City</button>
+                                <button class="table-sort d-flex justify-content-between" data-sort="sort-city">Ciudad</button>
                               </th>
                               <th>
                                 <button class="table-sort d-flex justify-content-between" data-sort="sort-status">Status</button>
