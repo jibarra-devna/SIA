@@ -66,7 +66,7 @@
                     <div class="card-header">
                       <div class="row w-full">
                         <div class="col">
-                          <h3 class="card-title mb-0">Employee</h3>
+                          <h3 class="card-title mb-0">Empleado</h3>
                           <p class="text-secondary m-0">Table description.</p>
                         </div>
                         <div class="col-md-auto col-sm-12">
