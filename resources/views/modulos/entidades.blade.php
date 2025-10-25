@@ -107,7 +107,7 @@
                             <tr>
                               <th class="w-1"></th>
                               <th>
-                                <button class="table-sort d-flex justify-content-between" data-sort="sort-name">Name</button>
+                                <button class="table-sort d-flex justify-content-between" data-sort="sort-name">Nombre</button>
                               </th>
                               <th>
                                 <button class="table-sort d-flex justify-content-between" data-sort="sort-city">City</button>
