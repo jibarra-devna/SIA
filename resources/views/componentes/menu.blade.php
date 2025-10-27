@@ -27,19 +27,15 @@
 
 @php
   $tab = request('tab'); // puede venir null
+
+  // ----- ENTIDADES -----
   $tabsEntidades = ['listado','titulos','sectores','departamentos','tipos'];
-  $tabsVentas = ['cotizaciones','ordenesventas'];
-
-  // Si no hay ?tab o viene algo fuera de la lista, usamos "contactos"
   $effectiveTabEntidades = in_array($tab, $tabsEntidades) ? $tab : 'listado';
-  $effectiveTabVentas = in_array($tab, $tabsVentas) ? $tab : 'cotizaciones';
+  $isEntidadesRoute = request()->routeIs('entidades'); // padre activo solo en /entidades
 
-  // El padre (Entidades 2) debe verse activo siempre que estés en /entidades
-  $ActiveEntidades = request()->routeIs('entidades');
-  $entidadesSoloActiva = request()->routeIs('entidades') && !in_array($tab, $tabsEntidades);
-
-  $ActiveVentas = request()->routeIs('entidades');
-  $entidadesSoloActivaVentas = request()->routeIs('entidades') && !in_array($tab, $tabsVentas);
+  // ----- VENTAS -----
+  // si aún no tienes tabs, usa solo las rutas hijas
+  $isVentasRoute = request()->routeIs(['cotizaciones','ordenesventa']); // ajusta a tus names reales
 @endphp
 
   <div class="page">
@@ -70,32 +66,11 @@
                     </a>
                   </li>
 
-                  <!-- ENTIDADES (ruta simple sin tab) 
-                  <li class="nav-item">
-                    <a href="{{ route('entidades') }}"
-                       class="nav-link {{ $entidadesSoloActiva ? 'active' : '' }}">
-                      <span class="nav-link-icon d-md-none d-lg-inline-block">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-building" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                          <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                          <path d="M3 21l18 0" />
-                          <path d="M5 21v-16a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v16" />
-                          <path d="M9 8l1 0" />
-                          <path d="M9 12l1 0" />
-                          <path d="M9 16l1 0" />
-                          <path d="M14 8l1 0" />
-                          <path d="M14 12l1 0" />
-                          <path d="M14 16l1 0" />
-                        </svg>
-                      </span>
-                      <span class="nav-link-title">Entidades</span>
-                    </a>
-                  </li>-->
-
                   <!-- ENTIDADES 2 (Submenú que también va a /entidades, pero con ?tab=...) -->
                   <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle {{ $ActiveEntidades ? 'active' : '' }}"
-                        href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside"
-                        role="button" aria-expanded="{{ $ActiveEntidades ? 'true' : 'false' }}">
+                    <a class="nav-link dropdown-toggle {{ $isEntidadesRoute ? 'active' : '' }}"
+                        data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button"
+                        aria-expanded="{{ $isEntidadesRoute ? 'true' : 'false' }}">
                         <span class="nav-link-icon d-md-none d-lg-inline-block">
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-building" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                           <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -113,20 +88,19 @@
                     </a>
 
                     <div class="dropdown-menu">
-                        {{-- /entidades sin ?tab => Contactos activo --}}
-                        <a class="dropdown-item {{ $effectiveTabEntidades === 'listado' ? 'active' : '' }}"
+                        <a class="dropdown-item {{ $isEntidadesRoute && $effectiveTabEntidades==='listado' ? 'active' : '' }}"
                         href="{{ route('entidades') }}">Listado</a>
 
-                        <a class="dropdown-item {{ $effectiveTabEntidades === 'titulos' ? 'active' : '' }}"
+                        <a class="dropdown-item {{ $isEntidadesRoute && $effectiveTabEntidades==='titulos' ? 'active' : '' }}"
                         href="#">Títulos</a>
 
-                        <a class="dropdown-item {{ $effectiveTabEntidades === 'sectores' ? 'active' : '' }}"
+                        <a class="dropdown-item {{ $isEntidadesRoute && $effectiveTabEntidades==='sectores' ? 'active' : '' }}"
                         href="#">Sectores</a>
 
-                        <a class="dropdown-item {{ $effectiveTabEntidades === 'departamentos' ? 'active' : '' }}"
+                        <a class="dropdown-item {{ $isEntidadesRoute && $effectiveTabEntidades==='departamentos' ? 'active' : '' }}"
                         href="#">Departamentos</a>
 
-                        <a class="dropdown-item {{ $effectiveTabEntidades === 'tipos' ? 'active' : '' }}"
+                        <a class="dropdown-item {{ $isEntidadesRoute && $effectiveTabEntidades==='tipos' ? 'active' : '' }}"
                         href="#">Tipos de cuentas</a>
                     </div>
                     </li>
@@ -149,9 +123,9 @@
                   <!-- VENTAS -->
 
                   <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle {{ $ActiveVentas ? 'active' : '' }}"
-                        href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside"
-                        role="button" aria-expanded="{{ $ActiveVentas ? 'true' : 'false' }}">
+                    <a class="nav-link dropdown-toggle {{ $isVentasRoute ? 'active' : '' }}"
+                        data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button"
+                        aria-expanded="{{ $isVentasRoute ? 'true' : 'false' }}">
                         <span class="nav-link-icon d-md-none d-lg-inline-block">
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-receipt" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                           <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -165,12 +139,11 @@
                     </a>
 
                     <div class="dropdown-menu">
-                        {{-- /entidades sin ?tab => Contactos activo --}}
-                        <a class="dropdown-item {{ $effectiveTabVentas === 'listado' ? 'active' : '' }}"
-                        href="#">Cotizaciones</a>
+                        <a class="dropdown-item {{ request()->routeIs('cotizaciones') ? 'active' : '' }}"
+                        href="{{ route('cotizaciones') }}">Cotizaciones</a>
 
-                        <a class="dropdown-item {{ $effectiveTabVentas === 'titulos' ? 'active' : '' }}"
-                        href="#">Ordenes de Venta</a>
+                        <a class="dropdown-item {{ request()->routeIs('ordenesventa') ? 'active' : '' }}"
+                        href="#">Órdenes de Venta</a>
                     </div>
                     </li>
                 <!--  

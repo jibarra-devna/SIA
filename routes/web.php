@@ -18,6 +18,10 @@ Route::get('/entidades', function () {
     return view('/modulos/entidades');
 })->name('entidades');
 
+Route::get('/cotizaciones', function () {
+    return view('/modulos/ventas/cotizaciones');
+})->name('cotizaciones');
+
 #eliminar después
 Route::get('/footer', function () {
     return view('/componentes/footer');
