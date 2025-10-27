@@ -50,6 +50,7 @@
                         <div class="col">
                             <!-- Page pre-title -->
                             <h2 class="page-title">Entidades</h2>
+                            <p>Listado</p>
                         </div>
                     </div>
                 </div>
