@@ -93,10 +93,10 @@
                               </span>
                               <input id="advanced-table-search" type="text" class="form-control" autocomplete="off" />
                               <span class="input-group-text">
-                                <kbd>ctrl + K</kbd>
+                                <kbd>Buscar</kbd>
                               </span>
                             </div>
-                            <a href="#" class="btn btn-0"> Añadir nueva </a>
+                            <a href="{{ route('cotizacion') }}" class="btn btn-0"> Nueva Cotización</a>
                           </div>
                         </div>
                       </div>
@@ -108,22 +108,19 @@
                             <tr>
                               <th class="w-1"></th>
                               <th>
-                                <button class="table-sort d-flex justify-content-between" data-sort="sort-name">Nombre</button>
+                                <button class="table-sort d-flex justify-content-between" data-sort="sort-name">Cotización</button>
                               </th>
                               <th>
-                                <button class="table-sort d-flex justify-content-between" data-sort="sort-city">Ciudad</button>
+                                <button class="table-sort d-flex justify-content-between" data-sort="sort-city">Cliente</button>
                               </th>
                               <th>
-                                <button class="table-sort d-flex justify-content-between" data-sort="sort-status">Status</button>
+                                <button class="table-sort d-flex justify-content-between" data-sort="sort-status">Fecha</button>
                               </th>
                               <th>
-                                <button class="table-sort d-flex justify-content-between" data-sort="sort-date">Start date</button>
+                                <button class="table-sort d-flex justify-content-between" data-sort="sort-date">Total</button>
                               </th>
                               <th>
-                                <button class="table-sort d-flex justify-content-between" data-sort="sort-tags">Tags</button>
-                              </th>
-                              <th>
-                                <button class="table-sort d-flex justify-content-between" data-sort="sort-category">Category</button>
+                                <button class="table-sort d-flex justify-content-between" data-sort="sort-tags">Estatus</button>
                               </th>
                             </tr>
                           </thead>
@@ -152,32 +149,6 @@
                                   <span class="badge">Tickets</span>
                                 </div>
                               </td>
-                              <td class="sort-category py-0">
-                                <span class="on-unchecked"> Individual </span>
-                                <div class="on-checked">
-                                  <div class="d-flex justify-content-end">
-                                    <a href="#" class="btn btn-2 btn-icon" aria-label="Button">
-                                      <!-- Download SVG icon from http://tabler.io/icons/icon/dots -->
-                                      <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width="24"
-                                        height="24"
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        stroke-width="2"
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        class="icon icon-2"
-                                      >
-                                        <path d="M5 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
-                                        <path d="M12 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
-                                        <path d="M19 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
-                                      </svg>
-                                    </a>
-                                  </div>
-                                </div>
-                              </td>
                             </tr>
                             <tr>
                               <td>
@@ -201,32 +172,6 @@
                                 <div class="badges-list">
                                   <span class="badge">QTA</span>
                                   <span class="badge">Event</span>
-                                </div>
-                              </td>
-                              <td class="sort-category py-0">
-                                <span class="on-unchecked"> Agencies </span>
-                                <div class="on-checked">
-                                  <div class="d-flex justify-content-end">
-                                    <a href="#" class="btn btn-2 btn-icon" aria-label="Button">
-                                      <!-- Download SVG icon from http://tabler.io/icons/icon/dots -->
-                                      <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width="24"
-                                        height="24"
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        stroke-width="2"
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        class="icon icon-2"
-                                      >
-                                        <path d="M5 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
-                                        <path d="M12 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
-                                        <path d="M19 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
-                                      </svg>
-                                    </a>
-                                  </div>
                                 </div>
                               </td>
                             </tr>

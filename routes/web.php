@@ -23,8 +23,12 @@ Route::get('/entidades/example', function () {
 })->name('entidad');
 
 Route::get('/cotizaciones', function () {
-    return view('/modulos/ventas/cotizaciones');
+    return view('/modulos/ventas/listadoCotizaciones');
 })->name('cotizaciones');
+
+Route::get('/cotizacion', function () {
+    return view('/modulos/ventas/cotizacion');
+})->name('cotizacion');
 
 #eliminar después
 Route::get('/footer', function () {
