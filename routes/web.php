@@ -15,8 +15,12 @@ Route::get('/header', function () {
 });
 
 Route::get('/entidades', function () {
-    return view('/modulos/entidades');
+    return view('/modulos/entidades/listado');
 })->name('entidades');
+
+Route::get('/entidades/example', function () {
+    return view('/modulos/entidades/entidad');
+})->name('entidad');
 
 Route::get('/cotizaciones', function () {
     return view('/modulos/ventas/cotizaciones');

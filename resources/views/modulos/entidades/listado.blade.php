@@ -96,7 +96,7 @@
                                 <kbd>ctrl + K</kbd>
                               </span>
                             </div>
-                            <a href="#" class="btn btn-0"> Añadir nueva </a>
+                            <a href="{{ route('entidad') }}" class="btn btn-0"> Añadir nueva </a>
                           </div>
                         </div>
                       </div>
